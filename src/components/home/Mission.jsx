@@ -25,19 +25,19 @@ const Mission = () => {
           </Typography>
           <br />
           <Typography variant="p" fontSize={16} fontWeight={400}>
-            Make the appearance of a mobile application that has quality and
-            increases user convenience
+            Train users on best practices to adopt for a healthy ecosystem that
+            works for all.
           </Typography>
         </Grid>
-        <Grid item xs={4} sx={{height: "312px"}}>
+        <Grid item xs={4} sx={{ height: "312px" }}>
           <SchoolIcon />
           <Typography variant="h5" fontSize={24} fontWeight={700}>
             Track
           </Typography>
           <br />
           <Typography variant="p" fontSize={16} fontWeight={400}>
-            Make the appearance of a mobile application that has quality and
-            increases user convenience
+            Monitoring and Tracking of user’s daily activities through a
+            collection of data from the user in the form of a questionnaire
           </Typography>
         </Grid>
         <Grid item xs={4}>
@@ -47,8 +47,8 @@ const Mission = () => {
           </Typography>
           <br />
           <Typography variant="p" fontSize={16} fontWeight={400}>
-            Make the appearance of a mobile application that has quality and
-            increases user convenience
+            From the collected data, We pose the right steps individual users
+            are to take for minimal contribution to climate change
           </Typography>
         </Grid>
       </Grid>

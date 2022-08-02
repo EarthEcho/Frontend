@@ -26,16 +26,21 @@ function Hero() {
               color: "white",
             }}
           >
-            Lets Make our Earth Green and Clean <span style={{color: "#53C351"}}>☘</span>
+            Lets Make our Earth Green and Clean{" "}
+            <span style={{ color: "#53C351" }}>☘</span>
           </Typography>
           <Typography
             variant="p"
             color="white"
             sx={{ marginTop: "24px", marginBottom: "40px" }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-            facilisis quam volutpat turpis. Felis mi, ultrices ornare duis
-            placerat erat.
+            Our planet provides us with many gifts, including sunlight, air,
+            water, soil, minerals, plants, and wildlife. In order to preserve
+            the environment and nature, we must always keep them clean. An
+            environment that is polluted causes diseases, toxic viruses and
+            germs. The health of our environment is crucial. In a clean and
+            green ecosystem, we have access to fresh air and pollution is
+            reduced.
           </Typography>
           <Stack mt={6} spacing={7} direction="row">
             <Button
@@ -47,7 +52,12 @@ function Hero() {
             >
               Join Us
             </Button>
-            <Button variant="outlined" sx={{color:"#53C351", borderColor: "#53C351"}}>Learn More</Button>
+            <Button
+              variant="outlined"
+              sx={{ color: "#53C351", borderColor: "#53C351" }}
+            >
+              Learn More
+            </Button>
           </Stack>
         </Grid>
         <Grid item xs={5}>
