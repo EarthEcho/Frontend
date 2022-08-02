@@ -1,13 +1,19 @@
-import React from 'react'
+import React from "react";
 import DashContent from "../../components/Dashboard/DashContent";
 import ProductCard from "../../components/Dashboard/ProductCard";
+import { useContext } from "react";
+import AuthContext from "./../../Authentication/AuthProvider";
+import { Navigate } from "react-router";
 
 const Product = () => {
-  return (
+  const { auth } = useContext(AuthContext);
+  return auth.token ? (
     <DashContent>
-        <ProductCard />
+      <ProductCard />
     </DashContent>
-  )
-}
+  ) : (
+    <Navigate to="/login" />
+  );
+};
 
-export default Product
+export default Product;

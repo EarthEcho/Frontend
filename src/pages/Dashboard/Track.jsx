@@ -1,13 +1,19 @@
-import React from 'react'
+import React from "react";
 import DashContent from "../../components/Dashboard/DashContent";
-import TrackFrame from '../../components/Dashboard/TrackFrame';
+import TrackFrame from "../../components/Dashboard/TrackFrame";
+import { useContext } from "react";
+import AuthContext from "./../../Authentication/AuthProvider";
+import { Navigate } from "react-router";
 
 const Track = () => {
-  return (
+  const { auth } = useContext(AuthContext);
+  return auth.token ? (
     <DashContent>
-        <TrackFrame />
+      <TrackFrame />
     </DashContent>
-  )
-}
+  ) : (
+    <Navigate to="/login" />
+  );
+};
 
-export default Track
+export default Track;
