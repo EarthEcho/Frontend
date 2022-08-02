@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext } from "react";
 import Button from '@mui/material/Button';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -7,10 +8,13 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
+import AuthContext from "./../../Authentication/AuthProvider";
 
-function MenuListComposition(props) {
+
+function MenuListComposition() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const { auth } = useContext(AuthContext);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -55,7 +59,7 @@ function MenuListComposition(props) {
           onClick={handleToggle}
          sx={{color: "#fff"}}
         >
-         {props.user}
+         {auth.user}
         </Button>
         <Popper
           open={open}

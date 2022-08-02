@@ -125,7 +125,7 @@ const DashHead = (props) => {
           alt="Remy Sharp"
           src="https://mui.com/static/images/avatar/1.jpg"
         />
-        <MenuListComposition user={props.user} />
+        <MenuListComposition />
         <IconButton color="inherit">
           <Badge badgeContent={4} color="secondary">
             <NotificationsIcon />

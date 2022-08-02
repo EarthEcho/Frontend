@@ -13,7 +13,6 @@ function DashContent(props) {
         drawerWidth={drawerWidth}
         open={open}
         setOpen={setOpen}
-        user={props.user}
       />
       <DashDrawer drawerWidth={drawerWidth} open={open} setOpen={setOpen} />
       {props.children}

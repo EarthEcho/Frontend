@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import AuthContext from "../../Authentication/AuthProvider";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function LoginSide() {
   const navigate = useNavigate();
@@ -35,40 +35,43 @@ function LoginSide() {
       );
       const token = response?.data?.token;
       const user = response?.data?.username;
-      const pwd = response?.data?.password;
-      console.log(response?.data);
-      setAuth({ user, pwd, token });
-      Swal.fire({
-        title: 'Success',
-        text: 'Login Successfully',
-        icon: 'success',
-        timer: 2500
-      })
-      navigate("/dashboard");
+      const authorId = response?.data?.author_id;
+      const userId = response?.data?.user_id;
+      const email = response?.data?.email;
 
-    } catch (err){
+      setAuth({ user, token, authorId, userId, email });
+
+      Swal.fire({
+        title: "Success",
+        text: user + " Login Successfully",
+        icon: "success",
+        timer: 2500,
+      });
+      navigate("/dashboard");
+    } catch (err) {
       if (!err?.response) {
         Swal.fire({
-          title: 'Error!',
-          text: 'Network Error',
-          icon: 'error',
-          timer: 2500
-        })
-    } else if (err.response?.status === 409) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Wrong email or password',
-        icon: 'error',
-        timer: 2500
-      })
-    } else {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Login Failed',
-        icon: 'error',
-        timer: 2500
-      })
-    }}
+          title: "Error!",
+          text: "Network Error",
+          icon: "error",
+          timer: 2500,
+        });
+      } else if (err.response?.status === 409) {
+        Swal.fire({
+          title: "Error!",
+          text: "Wrong email or password",
+          icon: "error",
+          timer: 2500,
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Login Failed",
+          icon: "error",
+          timer: 2500,
+        });
+      }
+    }
   };
 
   return (
