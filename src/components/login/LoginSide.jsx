@@ -24,7 +24,7 @@ function LoginSide() {
 
     try {
       const response = await axios.post(
-        "http://earthclimate.herokuapp.com/api/login/",
+        "https://earthclimate.herokuapp.com/api/login/",
         JSON.stringify({
           username: data.get("username"),
           password: data.get("password"),

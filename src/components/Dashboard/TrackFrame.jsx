@@ -23,7 +23,7 @@ const TrackFrame = () => {
             width={"100%"}
             height={"700px"}
             st
-              src={"http://healthy-earth-viz-page.herokuapp.com/"}
+              src={"https://healthy-earth-viz-page.herokuapp.com/"}
             ></iframe>
       </Container>
     </Box>

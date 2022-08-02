@@ -57,10 +57,10 @@ const Learn = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://earthclimate.herokuapp.com/api/climate/"
+        "https://earthclimate.herokuapp.com/api/climate/"
       );
       const factsResponse = await axios.get(
-        "http://earthclimate.herokuapp.com/api/climate/fact"
+        "https://earthclimate.herokuapp.com/api/climate/fact"
       );
 
       setFacts(factsResponse?.data);
