@@ -143,7 +143,6 @@ const Learn = () => {
                   component="div"
                   sx={{
                     fontSize: "30px",
-                   
                     color: "white",
                     fontWeight: 600,
                     width: "100%",
