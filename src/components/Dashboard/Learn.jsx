@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "./../../Authentication/AuthProvider";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -53,14 +54,25 @@ const Learn = () => {
     "",
   ]);
   const [facts, setFacts] = useState([]);
+  const { auth } = useContext(AuthContext);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://earthclimate.herokuapp.com/api/climate/"
+        "https://earthclimate.herokuapp.com/api/climate/",
+        {
+          headers: {
+            Authorization: `Token ${auth.token}`,
+          },
+        }
       );
       const factsResponse = await axios.get(
-        "https://earthclimate.herokuapp.com/api/climate/fact"
+        "https://earthclimate.herokuapp.com/api/climate/fact",
+        {
+          headers: {
+            Authorization: `Token ${auth.token}`,
+          },
+        }
       );
 
       setFacts(factsResponse?.data);

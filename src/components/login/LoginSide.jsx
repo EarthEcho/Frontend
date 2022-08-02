@@ -36,7 +36,7 @@ function LoginSide() {
       const token = response?.data?.token;
       const user = response?.data?.username;
       const pwd = response?.data?.password;
-
+      console.log(response?.data);
       setAuth({ user, pwd, token });
       Swal.fire({
         title: 'Success',

@@ -64,7 +64,7 @@ const DashDrawer = (props) => {
           noWrap
           sx={{ flexGrow: 1 }}
         >
-          EarthEcho Dashboard
+          Healthy Earth
         </Typography>
       </Toolbar>
       <Divider />
