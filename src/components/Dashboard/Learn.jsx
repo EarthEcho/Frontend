@@ -144,7 +144,7 @@ const Learn = () => {
                   sx={{
                     fontSize: "30px",
                     background:
-                      "url('https://cdn-res.keymedia.com/cms/images/ca/155/0382_637563297731887770.jpg')",
+                      "url('https://rukminim1.flixcart.com/image/416/416/pin-up-board/w/k/g/nb-xx-20-1-anjali-display-clip-board-green-1x1-foot-notice-board-original-imae3uswxfsmuhuk.jpeg')",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
                     width: "100%",
