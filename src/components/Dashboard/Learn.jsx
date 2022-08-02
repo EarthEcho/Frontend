@@ -147,6 +147,8 @@ const Learn = () => {
                       "url('https://rukminim1.flixcart.com/image/416/416/pin-up-board/w/k/g/nb-xx-20-1-anjali-display-clip-board-green-1x1-foot-notice-board-original-imae3uswxfsmuhuk.jpeg')",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
+                    color: "white",
+                    fontWeight: 600,
                     width: "100%",
                     height: 700,
                   }}
