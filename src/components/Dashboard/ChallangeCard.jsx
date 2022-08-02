@@ -10,7 +10,7 @@ import {
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-
+import Swal from 'sweetalert2'
 const ChallangeCard = () => {
   return (
     <Box
@@ -45,9 +45,9 @@ const ChallangeCard = () => {
                   <CardMedia
                     sx={{ height: 0, paddingTop: "56.25%" }}
                     image={
-                      "https://cdn11.bigcommerce.com/s-ufhcuzfxw9/images/stencil/1280x1280/products/13245/13354/KT-NEWENER__96072.1573683399.jpg?c=2"
+                      "https://www.ldeo.columbia.edu/sites/default/files/Climate-challenge-1.jpeg"
                     }
-                    title={"tomato"}
+                    title={"challange"}
                   />
 
                   <CardContent>
@@ -55,10 +55,8 @@ const ChallangeCard = () => {
                       sx={{ display: "flex", justifyContent: "space-between" }}
                     >
                       <Typography variant="h5" gutterBottom>
-                        {"Challange"+i}
+                        {"Challange"+ i}
                       </Typography>
-
-                      <Typography variant="h5">{"#2554"}</Typography>
                     </div>
 
                     <Typography
@@ -71,7 +69,7 @@ const ChallangeCard = () => {
                     disableSpacing
                     sx={{ display: "flex", justifyContent: "flex-end" }}
                   >
-                    <Button variant="contained" color="success">Select</Button>
+                    <Button variant="contained" color="success" onClick={() => {Swal.fire("This challange is not available yet")}}>See challange</Button>
                   </CardActions>
                 </Card>
               </Grid>

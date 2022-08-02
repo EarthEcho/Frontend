@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 
-function MenuListComposition() {
+function MenuListComposition(props) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -55,7 +55,7 @@ function MenuListComposition() {
           onClick={handleToggle}
          sx={{color: "#fff"}}
         >
-         My account
+         {props.user}
         </Button>
         <Popper
           open={open}

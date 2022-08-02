@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { useContext, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -12,64 +13,75 @@ import Container from "@mui/material/Container";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../../Authentication/AuthProvider";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+import PasswordChecklist from "react-password-checklist";
 
-export default function SignUp() {
+function RegisterForm() {
+  const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
+  const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const { setAuth } = React.useContext(AuthContext);
-      try {
-        const response = axios.post(
-          "http://earthclimate.herokuapp.com/api/user/",
-          JSON.stringify({
-            username: data.get("email"),
-            email: data.get("email"),
-            first_name: data.get("firstName"),
-            last_name: data.get("lastName"),
-            password: data.get("password"),
-            confirm_password: data.get("password"),
-          }),
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
-        );
-        const token = response?.data?.token;
-        const user = response?.data?.username;
-        const pwd = response?.data?.password;
-        setAuth({ user, pwd, token });
+    try {
+      const response = await axios.post(
+        "http://earthclimate.herokuapp.com/api/user/",
+        JSON.stringify({
+          username: data.get("email"),
+          email: data.get("email"),
+          first_name: data.get("firstName"),
+          last_name: data.get("lastName"),
+          password: data.get("password"),
+          confirm_password: data.get("confirmPassword"),
+        }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      const token = response?.data?.token;
+      const user = response?.data?.username;
+      const pwd = response?.data?.password;
+      setAuth({ user, pwd, token });
+      Swal.fire({
+        title: "Success",
+        text: "Registration Successfully",
+        icon: "success",
+        timer: 5000,
+      });
+      navigate("/login");
+    } catch (err) {
+      if (!err?.response) {
         Swal.fire({
-          title: 'Success',
-          text: 'Login Successfully',
-          icon: 'success',
-          timer: 2500
-        })
-  
-      } catch (err){
-        if (!err?.response) {
-          Swal.fire({
-            title: 'Error!',
-            text: 'Network Error',
-            icon: 'error',
-            timer: 2500
-          })
+          title: "Error!",
+          text: "Network Error",
+          icon: "error",
+          timer: 5000,
+        });
       } else if (err.response?.status === 409) {
         Swal.fire({
-          title: 'Error!',
-          text: 'Username Taken',
-          icon: 'error',
-          timer: 2500
-        })
+          title: "Error!",
+          text: "Username Taken",
+          icon: "error",
+          timer: 5000,
+        });
+      } else if (err.response?.status === 400) {
+        console.log(err.response);
+        Swal.fire({
+          title: "Error!",
+          text: err.response?.data,
+          icon: "error",
+          timer: 5000,
+        });
       } else {
         Swal.fire({
-          title: 'Error!',
-          text: 'Registeration Failed',
-          icon: 'error',
-          timer: 2500
-        })
-      }}
+          title: "Error!",
+          text: "Registration Failed",
+          icon: "error",
+          timer: 5000,
+        });
+      }
+    }
   };
 
   return (
@@ -153,8 +165,34 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="confirmPassword"
+                  label="Comfirm Password"
+                  type="password"
+                  id="confirmPassword"
+                  autoComplete="new-password"
+                  onChange={(e) => setPasswordAgain(e.target.value)}
+                />
+              </Grid>
+              <PasswordChecklist
+                rules={[
+                  "minLength",
+                  "specialChar",
+                  "number",
+                  "capital",
+                  "match",
+                ]}
+                minLength={5}
+                value={password}
+                valueAgain={passwordAgain}
+                onChange={(isValid) => {}}
+              />
               <Grid item xs={12}>
                 <FormControlLabel
                   control={
@@ -185,3 +223,5 @@ export default function SignUp() {
     </Container>
   );
 }
+
+export default RegisterForm;

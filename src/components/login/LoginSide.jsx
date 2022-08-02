@@ -14,7 +14,7 @@ import axios from "axios";
 import AuthContext from "../../Authentication/AuthProvider";
 import Swal from 'sweetalert2'
 
-export default function LoginSide() {
+function LoginSide() {
   const navigate = useNavigate();
   const { setAuth } = React.useContext(AuthContext);
 
@@ -23,20 +23,20 @@ export default function LoginSide() {
     const data = new FormData(event.currentTarget);
 
     try {
-      const response = axios.post(
-        "http://earthclimate.herokuapp.com/api/user/",
+      const response = await axios.post(
+        "http://earthclimate.herokuapp.com/api/login/",
         JSON.stringify({
           username: data.get("username"),
           password: data.get("password"),
         }),
         {
           headers: { "Content-Type": "application/json" },
-          withCredentials: true,
         }
       );
       const token = response?.data?.token;
       const user = response?.data?.username;
       const pwd = response?.data?.password;
+
       setAuth({ user, pwd, token });
       Swal.fire({
         title: 'Success',
@@ -44,6 +44,7 @@ export default function LoginSide() {
         icon: 'success',
         timer: 2500
       })
+      navigate("/dashboard");
 
     } catch (err){
       if (!err?.response) {
@@ -56,14 +57,14 @@ export default function LoginSide() {
     } else if (err.response?.status === 409) {
       Swal.fire({
         title: 'Error!',
-        text: 'Username Taken',
+        text: 'Wrong email or password',
         icon: 'error',
         timer: 2500
       })
     } else {
       Swal.fire({
         title: 'Error!',
-        text: 'Registeration Failed',
+        text: 'Login Failed',
         icon: 'error',
         timer: 2500
       })
@@ -146,3 +147,5 @@ export default function LoginSide() {
     </Container>
   );
 }
+
+export default LoginSide;

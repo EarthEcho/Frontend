@@ -6,12 +6,13 @@ import {
   CardActions,
   Typography,
   IconButton,
-  Button
+  Button,
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { AddShoppingCart } from "@mui/icons-material";
+import Swal from "sweetalert2"
 
 const ProductCard = () => {
   return (
@@ -29,7 +30,7 @@ const ProductCard = () => {
     >
       <Container maxWidth="100%" sx={{ mt: 8, mb: 4 }}>
         <Grid container spacing={2} width="100%">
-          {[...Array(20)].map(() => {
+          {[...Array(20)].map((e, i) => {
             return (
               <Grid
                 item
@@ -59,8 +60,6 @@ const ProductCard = () => {
                       <Typography variant="h5" gutterBottom>
                         {"Clean Energy Kit"}
                       </Typography>
-
-                      <Typography variant="h5">{"#2554"}</Typography>
                     </div>
 
                     <Typography
@@ -79,7 +78,15 @@ const ProductCard = () => {
                     >
                       <AddShoppingCart />
                     </IconButton>
-                    <Button variant="contained" color="success">Buy Now</Button>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      onClick={() => {
+                        Swal.fire("Product is not available at the moment");
+                      }}
+                    >
+                      Buy Now
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

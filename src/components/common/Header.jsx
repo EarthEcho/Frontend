@@ -22,7 +22,7 @@ function Header() {
       <List sx={{ display: "flex", marginLeft: 11 }}>
         {["Home", "Climate", "Blog", "About", "Contact"].map((el) => {
           return (
-            <ListItem>
+            <ListItem key={el}>
               <Typography
                 variant="h6"
                 sx={{ fontSize: "16px", fontWeight: "400" }}

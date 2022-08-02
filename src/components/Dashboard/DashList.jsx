@@ -43,7 +43,7 @@ export const MainListItems = () => {
       <ListItemIcon>
         <FlagIcon sx={{ color: "white" }} />
       </ListItemIcon>
-      <ListItemText primary="Goals" />
+      <ListItemText primary="Challanges" />
     </ListItemButton>
     <ListItemButton
       sx={{ py: 2, px: 6 }}
