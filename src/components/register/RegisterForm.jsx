@@ -28,7 +28,7 @@ function RegisterForm() {
       const response = await axios.post(
         "https://earthclimate.herokuapp.com/api/user/",
         JSON.stringify({
-          username: data.get("email"),
+          username: data.get("username"),
           email: data.get("email"),
           first_name: data.get("firstName"),
           last_name: data.get("lastName"),
