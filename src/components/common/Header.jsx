@@ -17,7 +17,7 @@ function Header() {
         color: "white",
       }}
     >
-      <Typography variant="h6">EarthEcho</Typography>
+      <Typography variant="h6">Healthy Earth</Typography>
       <Divider />
       <List sx={{ display: "flex", marginLeft: 11 }}>
         {["Home", "Climate", "Blog", "About", "Contact"].map((el) => {
