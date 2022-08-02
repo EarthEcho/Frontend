@@ -141,7 +141,15 @@ const Learn = () => {
                 <Typography
                   variant="h5"
                   component="div"
-                  sx={{ fontSize: "30px" }}
+                  sx={{
+                    fontSize: "30px",
+                    background:
+                      "url('https://cdn-res.keymedia.com/cms/images/ca/155/0382_637563297731887770.jpg')",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    width: "100%",
+                    height: 700,
+                  }}
                 >
                   {`Topic: ${current[0]}`}
                   <br />
